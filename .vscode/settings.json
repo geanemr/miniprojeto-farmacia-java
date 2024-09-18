@@ -1,0 +1,5 @@
+{
+    "files.exclude": { //remove arquivos .class
+        "**/*.class": true
+    },
+}
