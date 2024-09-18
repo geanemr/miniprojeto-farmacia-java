@@ -41,17 +41,8 @@ public class Main {
         // Exibe o lucro inicial da farmácia
         System.out.println("Lucro inicial da Farmacia: " + farmacia.getLucro());
         
-        // Exibe os medicamentos da farmácia
-        System.out.println("Medicamentos: ");
-        for (Medicamento med : farmacia.getMedicamentos()) {
-            System.out.println("Nome: " + med.getNome() + ", Quantidade: " + med.getQuantidadeEmEstoque() + ", Preco: " + med.getPreco());
-        }
-        
-        // Exibe os funcionários da farmácia
-        System.out.println("Funcionarios: ");
-        for (Funcionario func : farmacia.getFuncionarios()) {
-            System.out.println("Nome: " + func.getNome() + ", Bonus: " + func.getBonus() + ", Salario Base: " + func.getSalarioBase());
-        }
+        // Exibe os medicamentos e seus preços
+        farmacia.listarMedicamentos();
         
         // Realiza uma compra de Paracetamol pelo funcionário João
         farmacia.comprarMedicamento("Paracetamol", func1);
