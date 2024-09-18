@@ -38,6 +38,14 @@ public class Farmacia {
         this.funcionarios = funcionarios;
     }
 
+    // Método para listar os medicamentos e seus preços
+    public void listarMedicamentos() {
+        System.out.println("Lista de Medicamentos e Preços:");
+        for (Medicamento medicamento : medicamentos) {
+            System.out.println("Nome: " + medicamento.getNome() + ", Preço: " + medicamento.getPreco());
+        }
+    }
+
     // Método para comprar medicamento
     public void comprarMedicamento(String nomeMedicamento, Funcionario funcionario) {
         // Procura o medicamento na lista de medicamentos
