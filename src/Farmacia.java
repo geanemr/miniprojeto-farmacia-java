@@ -40,19 +40,19 @@ public class Farmacia {
 
     // Método para listar os medicamentos e seus preços
     public void listarMedicamentos() {
-        System.out.println("Lista de Medicamentos e Preços:");
+        System.out.println("Lista de Medicamentos e Precos:");
         for (Medicamento medicamento : medicamentos) {
-            System.out.println("Nome: " + medicamento.getNome() + ", Preço: " + medicamento.getPreco() +
+            System.out.println("Nome: " + medicamento.getNome() + ", Preco: " + medicamento.getPreco() +
                     ", Quantidade em Estoque: " + medicamento.getQuantidadeEmEstoque());
         }
     }
 
     // Método para listar os funcionários e seus bônus
     public void listarFuncionariosEBonus() {
-        System.out.println("Lista de Funcionários e Bônus:");
+        System.out.println("Lista de Funcionarios e Bonus:");
         for (Funcionario funcionario : funcionarios) {
-            System.out.println("Nome: " + funcionario.getNome() + ", Bônus: " + funcionario.getBonus() +
-                    ", Salário Base: " + funcionario.getSalarioBase());
+            System.out.println("Nome: " + funcionario.getNome() + ", Bonus: " + funcionario.getBonus() +
+                    ", Salario Base: " + funcionario.getSalarioBase());
         }
     }
 
@@ -62,12 +62,12 @@ public class Farmacia {
             if (medicamento.getNome().equalsIgnoreCase(nomeMedicamento)) {
                 System.out.println("Detalhes do Medicamento:");
                 System.out.println("Nome: " + medicamento.getNome());
-                System.out.println("Preço: " + medicamento.getPreco());
+                System.out.println("Preco: " + medicamento.getPreco());
                 System.out.println("Quantidade em Estoque: " + medicamento.getQuantidadeEmEstoque());
                 return;
             }
         }
-        System.out.println("Medicamento não encontrado.");
+        System.out.println("Medicamento nao encontrado.");
     }
 
     // Método para buscar um funcionário por nome
@@ -76,12 +76,12 @@ public class Farmacia {
             if (funcionario.getNome().equalsIgnoreCase(nomeFuncionario)) {
                 System.out.println("Detalhes do Funcionário:");
                 System.out.println("Nome: " + funcionario.getNome());
-                System.out.println("Bônus: " + funcionario.getBonus());
-                System.out.println("Salário Base: " + funcionario.getSalarioBase());
+                System.out.println("Bonus: " + funcionario.getBonus());
+                System.out.println("Salario Base: " + funcionario.getSalarioBase());
                 return;
             }
         }
-        System.out.println("Funcionário não encontrado.");
+        System.out.println("Funcionario nao encontrado.");
     }
 
     // Método para comprar medicamento
@@ -103,9 +103,9 @@ public class Farmacia {
                     System.out.println("Compra realizada: " + nomeMedicamento);
                     System.out.println(
                             "Novo estoque de " + nomeMedicamento + ": " + medicamento.getQuantidadeEmEstoque());
-                    System.out.println("Novo lucro da farmácia: " + this.getLucro());
+                    System.out.println("Novo lucro da farmacia: " + this.getLucro());
                     System.out.println(
-                            "Novo bônus do funcionário " + funcionario.getNome() + ": " + funcionario.getBonus());
+                            "Novo bonus do funcionario " + funcionario.getNome() + ": " + funcionario.getBonus());
                     return; // Compra realizada, sair do método
                 } else {
                     System.out.println("Estoque insuficiente de " + nomeMedicamento);
@@ -113,6 +113,6 @@ public class Farmacia {
                 }
             }
         }
-        System.out.println("Medicamento " + nomeMedicamento + " não encontrado.");
+        System.out.println("Medicamento " + nomeMedicamento + " nao encontrado.");
     }
 }

@@ -100,7 +100,7 @@ public class Main {
                     break;
                 default:
                     // Opção inválida
-                    System.out.println("Opçao invalida. Tente novamente.");
+                    System.out.println("Opcao invalida. Tente novamente.");
             }
         } while (opcao != 0);
 
