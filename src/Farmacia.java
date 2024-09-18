@@ -6,6 +6,13 @@ public class Farmacia {
     private List<Medicamento> medicamentos;
     private List<Funcionario> funcionarios;
 
+    // Construtor que define o lucro inicial como 0
+    public Farmacia(List<Medicamento> medicamentos, List<Funcionario> funcionarios) {
+        this.lucro = 0;
+        this.medicamentos = medicamentos;
+        this.funcionarios = funcionarios;
+    }
+
     // Métodos getters e setters para acessar e modificar as propriedades
     public double getLucro() {
         return lucro;
@@ -31,4 +38,3 @@ public class Farmacia {
         this.funcionarios = funcionarios;
     }
 }
-
