@@ -36,7 +36,7 @@ public class Main {
         funcionarios.add(func2);
 
         // Criação do objeto Farmacia com lucro, lista de medicamentos e lista de funcionários
-        Farmacia farmacia = new Farmacia();
+        Farmacia farmacia = new Farmacia(medicamentos, funcionarios);
         farmacia.setLucro(10000.00);
         farmacia.setMedicamentos(medicamentos);
         farmacia.setFuncionarios(funcionarios);
