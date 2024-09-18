@@ -77,4 +77,12 @@ public class Farmacia {
         }
         System.out.println("Medicamento " + nomeMedicamento + " não encontrado.");
     }
+
+    // Método para listar os funcionários e seus bônus
+    public void listarFuncionariosEBonus() {
+        System.out.println("Lista de Funcionários e Bônus:");
+        for (Funcionario funcionario : funcionarios) {
+            System.out.println("Nome: " + funcionario.getNome() + ", Bônus: " + funcionario.getBonus());
+        }
+    }
 }
