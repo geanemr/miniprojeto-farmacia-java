@@ -42,8 +42,46 @@ public class Farmacia {
     public void listarMedicamentos() {
         System.out.println("Lista de Medicamentos e Preços:");
         for (Medicamento medicamento : medicamentos) {
-            System.out.println("Nome: " + medicamento.getNome() + ", Preço: " + medicamento.getPreco());
+            System.out.println("Nome: " + medicamento.getNome() + ", Preço: " + medicamento.getPreco() +
+                    ", Quantidade em Estoque: " + medicamento.getQuantidadeEmEstoque());
         }
+    }
+
+    // Método para listar os funcionários e seus bônus
+    public void listarFuncionariosEBonus() {
+        System.out.println("Lista de Funcionários e Bônus:");
+        for (Funcionario funcionario : funcionarios) {
+            System.out.println("Nome: " + funcionario.getNome() + ", Bônus: " + funcionario.getBonus() +
+                    ", Salário Base: " + funcionario.getSalarioBase());
+        }
+    }
+
+    // Método para buscar um medicamento por nome
+    public void buscarMedicamento(String nomeMedicamento) {
+        for (Medicamento medicamento : medicamentos) {
+            if (medicamento.getNome().equalsIgnoreCase(nomeMedicamento)) {
+                System.out.println("Detalhes do Medicamento:");
+                System.out.println("Nome: " + medicamento.getNome());
+                System.out.println("Preço: " + medicamento.getPreco());
+                System.out.println("Quantidade em Estoque: " + medicamento.getQuantidadeEmEstoque());
+                return;
+            }
+        }
+        System.out.println("Medicamento não encontrado.");
+    }
+
+    // Método para buscar um funcionário por nome
+    public void buscarFuncionario(String nomeFuncionario) {
+        for (Funcionario funcionario : funcionarios) {
+            if (funcionario.getNome().equalsIgnoreCase(nomeFuncionario)) {
+                System.out.println("Detalhes do Funcionário:");
+                System.out.println("Nome: " + funcionario.getNome());
+                System.out.println("Bônus: " + funcionario.getBonus());
+                System.out.println("Salário Base: " + funcionario.getSalarioBase());
+                return;
+            }
+        }
+        System.out.println("Funcionário não encontrado.");
     }
 
     // Método para comprar medicamento
@@ -76,13 +114,5 @@ public class Farmacia {
             }
         }
         System.out.println("Medicamento " + nomeMedicamento + " não encontrado.");
-    }
-
-    // Método para listar os funcionários e seus bônus
-    public void listarFuncionariosEBonus() {
-        System.out.println("Lista de Funcionários e Bônus:");
-        for (Funcionario funcionario : funcionarios) {
-            System.out.println("Nome: " + funcionario.getNome() + ", Bônus: " + funcionario.getBonus());
-        }
     }
 }

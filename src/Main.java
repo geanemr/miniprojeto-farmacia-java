@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
@@ -35,22 +36,74 @@ public class Main {
         funcionarios.add(func1);
         funcionarios.add(func2);
 
-        // Criação do objeto Farmacia com listas de medicamentos e funcionários, o lucro será 0
+        // Criação do objeto Farmacia com listas de medicamentos e funcionários
         Farmacia farmacia = new Farmacia(medicamentos, funcionarios);
 
-        // Exibe o lucro inicial da farmácia
-        System.out.println("Lucro inicial da Farmacia: " + farmacia.getLucro());
-        
-        // Exibe os medicamentos e seus preços
-        farmacia.listarMedicamentos();
+        Scanner scanner = new Scanner(System.in);
+        int opcao;
 
-        // Exibe os funcionários e seus bônus
-        farmacia.listarFuncionariosEBonus();
-        
-        // Realiza uma compra de Paracetamol pelo funcionário João
-        farmacia.comprarMedicamento("Paracetamol", func1);
-        
-        // Exibe os funcionários e seus bônus após a compra
-        farmacia.listarFuncionariosEBonus();
+        do {
+            System.out.println("\nEscolha uma opcao:");
+            System.out.println("1. Listar medicamentos e seus precos");
+            System.out.println("2. Listar funcionarios e seus bonus");
+            System.out.println("3. Buscar medicamento");
+            System.out.println("4. Buscar funcionario");
+            System.out.println("5. Comprar medicamento");
+            System.out.println("0. Sair");
+            System.out.print("Opcao: ");
+            opcao = scanner.nextInt();
+            scanner.nextLine(); // Consome a nova linha
+
+            switch (opcao) {
+                case 1:
+                    // Listar medicamentos e seus preços
+                    farmacia.listarMedicamentos();
+                    break;
+                case 2:
+                    // Listar funcionários e seus bônus
+                    farmacia.listarFuncionariosEBonus();
+                    break;
+                case 3:
+                    // Buscar medicamento por nome
+                    System.out.print("Digite o nome do medicamento: ");
+                    String nomeMedicamento = scanner.nextLine();
+                    farmacia.buscarMedicamento(nomeMedicamento);
+                    break;
+                case 4:
+                    // Buscar funcionário por nome
+                    System.out.print("Digite o nome do funcionario: ");
+                    String nomeFuncionario = scanner.nextLine();
+                    farmacia.buscarFuncionario(nomeFuncionario);
+                    break;
+                case 5:
+                    // Comprar medicamento
+                    System.out.print("Digite o nome do medicamento para compra: ");
+                    String nomeMedicamentoCompra = scanner.nextLine();
+                    System.out.print("Digite o nome do funcionario: ");
+                    String nomeFuncionarioCompra = scanner.nextLine();
+                    Funcionario funcionarioCompra = null;
+                    for (Funcionario f : funcionarios) {
+                        if (f.getNome().equalsIgnoreCase(nomeFuncionarioCompra)) {
+                            funcionarioCompra = f;
+                            break;
+                        }
+                    }
+                    if (funcionarioCompra != null) {
+                        farmacia.comprarMedicamento(nomeMedicamentoCompra, funcionarioCompra);
+                    } else {
+                        System.out.println("Funcionario nao encontrado.");
+                    }
+                    break;
+                case 0:
+                    // Sair do programa
+                    System.out.println("Saindo...");
+                    break;
+                default:
+                    // Opção inválida
+                    System.out.println("Opçao invalida. Tente novamente.");
+            }
+        } while (opcao != 0);
+
+        scanner.close();
     }
 }
