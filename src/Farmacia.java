@@ -37,4 +37,36 @@ public class Farmacia {
     public void setFuncionarios(List<Funcionario> funcionarios) {
         this.funcionarios = funcionarios;
     }
+
+    // Método para comprar medicamento
+    public void comprarMedicamento(String nomeMedicamento, Funcionario funcionario) {
+        // Procura o medicamento na lista de medicamentos
+        for (Medicamento medicamento : medicamentos) {
+            if (medicamento.getNome().equalsIgnoreCase(nomeMedicamento)) {
+                // Verifica se o medicamento está disponível em estoque
+                if (medicamento.getQuantidadeEmEstoque() > 0) {
+                    // Remove 1 unidade do estoque
+                    medicamento.setQuantidadeEmEstoque(medicamento.getQuantidadeEmEstoque() - 1);
+
+                    // Adiciona o valor do medicamento ao lucro da farmácia
+                    this.lucro += medicamento.getPreco();
+
+                    // Aumenta o bônus do funcionário em 10
+                    funcionario.setBonus(funcionario.getBonus() + 10);
+
+                    System.out.println("Compra realizada: " + nomeMedicamento);
+                    System.out.println(
+                            "Novo estoque de " + nomeMedicamento + ": " + medicamento.getQuantidadeEmEstoque());
+                    System.out.println("Novo lucro da farmácia: " + this.getLucro());
+                    System.out.println(
+                            "Novo bônus do funcionário " + funcionario.getNome() + ": " + funcionario.getBonus());
+                    return; // Compra realizada, sair do método
+                } else {
+                    System.out.println("Estoque insuficiente de " + nomeMedicamento);
+                    return; // Estoque insuficiente
+                }
+            }
+        }
+        System.out.println("Medicamento " + nomeMedicamento + " não encontrado.");
+    }
 }
