@@ -35,14 +35,11 @@ public class Main {
         funcionarios.add(func1);
         funcionarios.add(func2);
 
-        // Criação do objeto Farmacia com lucro, lista de medicamentos e lista de funcionários
-        Farmacia farmacia = new Farmacia();
-        farmacia.setLucro(10000.00);
-        farmacia.setMedicamentos(medicamentos);
-        farmacia.setFuncionarios(funcionarios);
+        // Criação do objeto Farmacia com listas de medicamentos e funcionários, o lucro será 0
+        Farmacia farmacia = new Farmacia(medicamentos, funcionarios);
 
-        // Exibe o lucro da farmácia
-        System.out.println("Lucro da Farmacia: " + farmacia.getLucro());
+        // Exibe o lucro inicial da farmácia
+        System.out.println("Lucro inicial da Farmacia: " + farmacia.getLucro());
         
         // Exibe os medicamentos da farmácia
         System.out.println("Medicamentos: ");
@@ -55,7 +52,8 @@ public class Main {
         for (Funcionario func : farmacia.getFuncionarios()) {
             System.out.println("Nome: " + func.getNome() + ", Bonus: " + func.getBonus() + ", Salario Base: " + func.getSalarioBase());
         }
+        
+        // Realiza uma compra de Paracetamol pelo funcionário João
+        farmacia.comprarMedicamento("Paracetamol", func1);
     }
 }
-
-//quero que a main seja so para instanciar, chamar e imprimir na tela
