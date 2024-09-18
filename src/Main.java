@@ -43,8 +43,14 @@ public class Main {
         
         // Exibe os medicamentos e seus preços
         farmacia.listarMedicamentos();
+
+        // Exibe os funcionários e seus bônus
+        farmacia.listarFuncionariosEBonus();
         
         // Realiza uma compra de Paracetamol pelo funcionário João
         farmacia.comprarMedicamento("Paracetamol", func1);
+        
+        // Exibe os funcionários e seus bônus após a compra
+        farmacia.listarFuncionariosEBonus();
     }
 }
