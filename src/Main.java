@@ -45,7 +45,8 @@ public class Main {
         funcionarios.add(func3);
         funcionarios.add(func4);
 
-        // Criação do objeto Farmacia com listas de medicamentos e funcionários, o lucro será 0
+        // Criação do objeto Farmacia com listas de medicamentos e funcionários, o lucro
+        // será 0
         Farmacia farmacia = new Farmacia(medicamentos, funcionarios);
 
         // Criação do scanner para entrada de dados
@@ -108,6 +109,10 @@ public class Main {
                         System.out.println("Medicamento nao encontrado.");
                         break;
                     }
+                    System.out.print("Digite a quantidade de medicamentos para comprar: ");
+                    int quantidadeCompra = scanner.nextInt();
+                    scanner.nextLine(); // Limpa o buffer do scanner
+
                     System.out.print("Digite o nome do funcionario: ");
                     String nomeFuncionarioCompra = scanner.nextLine();
                     Funcionario funcionarioCompra = farmacia.getFuncionarios().stream()
@@ -115,7 +120,7 @@ public class Main {
                             .findFirst()
                             .orElse(null);
                     if (funcionarioCompra != null) {
-                        farmacia.comprarMedicamento(nomeMedicamentoCompra, funcionarioCompra);
+                        farmacia.comprarMedicamento(nomeMedicamentoCompra, funcionarioCompra, quantidadeCompra);
                     } else {
                         System.out.println("Funcionario nao encontrado.");
                     }
