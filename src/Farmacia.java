@@ -42,46 +42,16 @@ public class Farmacia {
     public void listarMedicamentos() {
         System.out.println("Lista de Medicamentos e Precos:");
         for (Medicamento medicamento : medicamentos) {
-            System.out.println("Nome: " + medicamento.getNome() + ", Preco: " + medicamento.getPreco() +
-                    ", Quantidade em Estoque: " + medicamento.getQuantidadeEmEstoque());
+            System.out.println("Nome: " + medicamento.getNome() + ", Preco: " + medicamento.getPreco());
         }
     }
 
     // Método para listar os funcionários e seus bônus
-    public void listarFuncionariosEBonus() {
+    public void listarFuncionarios() {
         System.out.println("Lista de Funcionarios e Bonus:");
         for (Funcionario funcionario : funcionarios) {
-            System.out.println("Nome: " + funcionario.getNome() + ", Bonus: " + funcionario.getBonus() +
-                    ", Salario Base: " + funcionario.getSalarioBase());
+            funcionario.exibirDetalhes();
         }
-    }
-
-    // Método para buscar um medicamento por nome
-    public void buscarMedicamento(String nomeMedicamento) {
-        for (Medicamento medicamento : medicamentos) {
-            if (medicamento.getNome().equalsIgnoreCase(nomeMedicamento)) {
-                System.out.println("Detalhes do Medicamento:");
-                System.out.println("Nome: " + medicamento.getNome());
-                System.out.println("Preco: " + medicamento.getPreco());
-                System.out.println("Quantidade em Estoque: " + medicamento.getQuantidadeEmEstoque());
-                return;
-            }
-        }
-        System.out.println("Medicamento nao encontrado.");
-    }
-
-    // Método para buscar um funcionário por nome
-    public void buscarFuncionario(String nomeFuncionario) {
-        for (Funcionario funcionario : funcionarios) {
-            if (funcionario.getNome().equalsIgnoreCase(nomeFuncionario)) {
-                System.out.println("Detalhes do Funcionário:");
-                System.out.println("Nome: " + funcionario.getNome());
-                System.out.println("Bonus: " + funcionario.getBonus());
-                System.out.println("Salario Base: " + funcionario.getSalarioBase());
-                return;
-            }
-        }
-        System.out.println("Funcionario nao encontrado.");
     }
 
     // Método para comprar medicamento
@@ -101,11 +71,9 @@ public class Farmacia {
                     funcionario.setBonus(funcionario.getBonus() + 10);
 
                     System.out.println("Compra realizada: " + nomeMedicamento);
-                    System.out.println(
-                            "Novo estoque de " + nomeMedicamento + ": " + medicamento.getQuantidadeEmEstoque());
+                    System.out.println("Novo estoque de " + nomeMedicamento + ": " + medicamento.getQuantidadeEmEstoque());
                     System.out.println("Novo lucro da farmacia: " + this.getLucro());
-                    System.out.println(
-                            "Novo bonus do funcionario " + funcionario.getNome() + ": " + funcionario.getBonus());
+                    System.out.println("Novo bonus do funcionario " + funcionario.getNome() + ": " + funcionario.getBonus());
                     return; // Compra realizada, sair do método
                 } else {
                     System.out.println("Estoque insuficiente de " + nomeMedicamento);
@@ -114,5 +82,18 @@ public class Farmacia {
             }
         }
         System.out.println("Medicamento " + nomeMedicamento + " nao encontrado.");
+    }
+
+    // Método para limpar tudo
+    public void limparTudo() {
+        // Zera o lucro da farmácia
+        this.lucro = 0;
+
+        // Zera o bônus de todos os funcionários
+        for (Funcionario funcionario : funcionarios) {
+            funcionario.setBonus(0);
+        }
+
+        System.out.println("Todos os bonus foram zerados e o lucro da farmacia foi redefinido para 0.");
     }
 }
