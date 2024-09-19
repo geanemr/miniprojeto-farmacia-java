@@ -48,7 +48,7 @@ public class Farmacia {
 
     // Método para listar os funcionários e seus bônus
     public void listarFuncionarios() {
-        System.out.println("Lista de Funcionarios e Bonus:");
+        System.out.println("Lista de Funcionarios, Salarios base e Bonus:");
         for (Funcionario funcionario : funcionarios) {
             funcionario.exibirDetalhes();
         }
