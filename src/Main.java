@@ -15,19 +15,35 @@ public class Main {
         med2.setQuantidadeEmEstoque(50);
         med2.setPreco(7.00);
 
+        Medicamento med3 = new Medicamento();
+        med3.setNome("Dipirona");
+        med3.setQuantidadeEmEstoque(75);
+        med3.setPreco(4.00);
+
+        Medicamento med4 = new Medicamento();
+        med4.setNome("Omeprazol");
+        med4.setQuantidadeEmEstoque(25);
+        med4.setPreco(10.00);
+
         // Adiciona os medicamentos a uma lista
         List<Medicamento> medicamentos = new ArrayList<>();
         medicamentos.add(med1);
         medicamentos.add(med2);
+        medicamentos.add(med3);
+        medicamentos.add(med4);
 
         // Criação de objetos Funcionario
-        Funcionario func1 = new Funcionario("Joao", 3000.00);
-        Funcionario func2 = new Funcionario("Maria", 2500.00);
+        Funcionario func1 = new Funcionario("Joao", 2500.00);
+        Funcionario func2 = new Funcionario("Maria", 2600.00);
+        Funcionario func3 = new Funcionario("Pedro", 2600.00);
+        Funcionario func4 = new Funcionario("Ana", 2700.00);
 
         // Adiciona os funcionários a uma lista
         List<Funcionario> funcionarios = new ArrayList<>();
         funcionarios.add(func1);
         funcionarios.add(func2);
+        funcionarios.add(func3);
+        funcionarios.add(func4);
 
         // Criação do objeto Farmacia com listas de medicamentos e funcionários, o lucro será 0
         Farmacia farmacia = new Farmacia(medicamentos, funcionarios);
@@ -38,7 +54,7 @@ public class Main {
         while (true) {
             System.out.println("\nEscolha uma opcao:");
             System.out.println("1. Listar medicamentos e seus precos");
-            System.out.println("2. Listar funcionarios e seus bonus");
+            System.out.println("2. Listar funcionarios, seus salarios base e bonus");
             System.out.println("3. Buscar medicamento");
             System.out.println("4. Buscar funcionario");
             System.out.println("5. Comprar medicamento");

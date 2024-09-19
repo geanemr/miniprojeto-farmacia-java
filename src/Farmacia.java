@@ -74,6 +74,7 @@ public class Farmacia {
                     System.out.println("Novo estoque de " + nomeMedicamento + ": " + medicamento.getQuantidadeEmEstoque());
                     System.out.println("Novo lucro da farmacia: " + this.getLucro());
                     System.out.println("Novo bonus do funcionario " + funcionario.getNome() + ": " + funcionario.getBonus());
+                    System.out.println("Salario base do funcionario " + funcionario.getNome() + ": " + funcionario.getSalarioBase());
                     return; // Compra realizada, sair do método
                 } else {
                     System.out.println("Estoque insuficiente de " + nomeMedicamento);
