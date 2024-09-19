@@ -76,13 +76,13 @@ public class Main {
                     System.out.print("Digite o nome do medicamento: ");
                     String nomeMedicamento = scanner.nextLine();
                     Medicamento medicamento = farmacia.getMedicamentos().stream()
-                        .filter(m -> m.getNome().equalsIgnoreCase(nomeMedicamento))
-                        .findFirst()
-                        .orElse(null);
+                            .filter(m -> m.getNome().equalsIgnoreCase(nomeMedicamento))
+                            .findFirst()
+                            .orElse(null);
                     if (medicamento != null) {
                         System.out.println("Nome: " + medicamento.getNome() +
-                            ", Quantidade em Estoque: " + medicamento.getQuantidadeEmEstoque() +
-                            ", Preco: " + medicamento.getPreco());
+                                ", Quantidade em Estoque: " + medicamento.getQuantidadeEmEstoque() +
+                                ", Preco: " + medicamento.getPreco());
                     } else {
                         System.out.println("Medicamento nao encontrado.");
                     }
@@ -91,9 +91,9 @@ public class Main {
                     System.out.print("Digite o nome do funcionario: ");
                     String nomeFuncionario = scanner.nextLine();
                     Funcionario funcionario = farmacia.getFuncionarios().stream()
-                        .filter(f -> f.getNome().equalsIgnoreCase(nomeFuncionario))
-                        .findFirst()
-                        .orElse(null);
+                            .filter(f -> f.getNome().equalsIgnoreCase(nomeFuncionario))
+                            .findFirst()
+                            .orElse(null);
                     if (funcionario != null) {
                         funcionario.exibirDetalhes();
                     } else {
@@ -103,12 +103,17 @@ public class Main {
                 case 5:
                     System.out.print("Digite o nome do medicamento para compra: ");
                     String nomeMedicamentoCompra = scanner.nextLine();
+                    if (farmacia.getMedicamentos().stream()
+                            .noneMatch(m -> m.getNome().equalsIgnoreCase(nomeMedicamentoCompra))) {
+                        System.out.println("Medicamento nao encontrado.");
+                        break;
+                    }
                     System.out.print("Digite o nome do funcionario: ");
                     String nomeFuncionarioCompra = scanner.nextLine();
                     Funcionario funcionarioCompra = farmacia.getFuncionarios().stream()
-                        .filter(f -> f.getNome().equalsIgnoreCase(nomeFuncionarioCompra))
-                        .findFirst()
-                        .orElse(null);
+                            .filter(f -> f.getNome().equalsIgnoreCase(nomeFuncionarioCompra))
+                            .findFirst()
+                            .orElse(null);
                     if (funcionarioCompra != null) {
                         farmacia.comprarMedicamento(nomeMedicamentoCompra, funcionarioCompra);
                     } else {
