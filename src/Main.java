@@ -14,96 +14,102 @@ public class Main {
         med2.setNome("Ibuprofeno");
         med2.setQuantidadeEmEstoque(50);
         med2.setPreco(7.00);
-        
+
         // Adiciona os medicamentos a uma lista
         List<Medicamento> medicamentos = new ArrayList<>();
         medicamentos.add(med1);
         medicamentos.add(med2);
 
         // Criação de objetos Funcionario
-        Funcionario func1 = new Funcionario();
-        func1.setNome("Joao");
-        func1.setBonus(500);
-        func1.setSalarioBase(3000.00);
+        Funcionario func1 = new Funcionario("Joao", 3000.00);
+        Funcionario func2 = new Funcionario("Maria", 2500.00);
 
-        Funcionario func2 = new Funcionario();
-        func2.setNome("Maria");
-        func2.setBonus(300);
-        func2.setSalarioBase(2500.00);
-        
         // Adiciona os funcionários a uma lista
         List<Funcionario> funcionarios = new ArrayList<>();
         funcionarios.add(func1);
         funcionarios.add(func2);
 
-        // Criação do objeto Farmacia com listas de medicamentos e funcionários
+        // Criação do objeto Farmacia com listas de medicamentos e funcionários, o lucro será 0
         Farmacia farmacia = new Farmacia(medicamentos, funcionarios);
 
+        // Criação do scanner para entrada de dados
         Scanner scanner = new Scanner(System.in);
-        int opcao;
 
-        do {
+        while (true) {
             System.out.println("\nEscolha uma opcao:");
             System.out.println("1. Listar medicamentos e seus precos");
             System.out.println("2. Listar funcionarios e seus bonus");
             System.out.println("3. Buscar medicamento");
             System.out.println("4. Buscar funcionario");
             System.out.println("5. Comprar medicamento");
+            System.out.println("6. Limpar tudo");
             System.out.println("0. Sair");
             System.out.print("Opcao: ");
-            opcao = scanner.nextInt();
-            scanner.nextLine(); // Consome a nova linha
+
+            int opcao = scanner.nextInt();
+            scanner.nextLine(); // Limpa o buffer do scanner
 
             switch (opcao) {
                 case 1:
-                    // Listar medicamentos e seus preços
                     farmacia.listarMedicamentos();
                     break;
                 case 2:
-                    // Listar funcionários e seus bônus
-                    farmacia.listarFuncionariosEBonus();
+                    farmacia.listarFuncionarios();
                     break;
                 case 3:
-                    // Buscar medicamento por nome
                     System.out.print("Digite o nome do medicamento: ");
                     String nomeMedicamento = scanner.nextLine();
-                    farmacia.buscarMedicamento(nomeMedicamento);
+                    Medicamento medicamento = farmacia.getMedicamentos().stream()
+                        .filter(m -> m.getNome().equalsIgnoreCase(nomeMedicamento))
+                        .findFirst()
+                        .orElse(null);
+                    if (medicamento != null) {
+                        System.out.println("Nome: " + medicamento.getNome() +
+                            ", Quantidade em Estoque: " + medicamento.getQuantidadeEmEstoque() +
+                            ", Preco: " + medicamento.getPreco());
+                    } else {
+                        System.out.println("Medicamento nao encontrado.");
+                    }
                     break;
                 case 4:
-                    // Buscar funcionário por nome
                     System.out.print("Digite o nome do funcionario: ");
                     String nomeFuncionario = scanner.nextLine();
-                    farmacia.buscarFuncionario(nomeFuncionario);
+                    Funcionario funcionario = farmacia.getFuncionarios().stream()
+                        .filter(f -> f.getNome().equalsIgnoreCase(nomeFuncionario))
+                        .findFirst()
+                        .orElse(null);
+                    if (funcionario != null) {
+                        funcionario.exibirDetalhes();
+                    } else {
+                        System.out.println("Funcionario nao encontrado.");
+                    }
                     break;
                 case 5:
-                    // Comprar medicamento
                     System.out.print("Digite o nome do medicamento para compra: ");
                     String nomeMedicamentoCompra = scanner.nextLine();
                     System.out.print("Digite o nome do funcionario: ");
                     String nomeFuncionarioCompra = scanner.nextLine();
-                    Funcionario funcionarioCompra = null;
-                    for (Funcionario f : funcionarios) {
-                        if (f.getNome().equalsIgnoreCase(nomeFuncionarioCompra)) {
-                            funcionarioCompra = f;
-                            break;
-                        }
-                    }
+                    Funcionario funcionarioCompra = farmacia.getFuncionarios().stream()
+                        .filter(f -> f.getNome().equalsIgnoreCase(nomeFuncionarioCompra))
+                        .findFirst()
+                        .orElse(null);
                     if (funcionarioCompra != null) {
                         farmacia.comprarMedicamento(nomeMedicamentoCompra, funcionarioCompra);
                     } else {
                         System.out.println("Funcionario nao encontrado.");
                     }
                     break;
-                case 0:
-                    // Sair do programa
-                    System.out.println("Saindo...");
+                case 6:
+                    farmacia.limparTudo();
                     break;
+                case 0:
+                    System.out.println("Saindo...");
+                    scanner.close();
+                    return; // Sai do loop e encerra o programa
                 default:
-                    // Opção inválida
                     System.out.println("Opcao invalida. Tente novamente.");
+                    break;
             }
-        } while (opcao != 0);
-
-        scanner.close();
+        }
     }
 }
