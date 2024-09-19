@@ -26,6 +26,7 @@ public class Funcionario {
 
     public void setBonus(int bonus) {
         this.bonus = bonus;
+        atualizarSalarioBase(); // Atualiza o salário base quando o bônus muda
     }
 
     public double getSalarioBase() {
@@ -34,6 +35,13 @@ public class Funcionario {
 
     public void setSalarioBase(double salarioBase) {
         this.salarioBase = salarioBase;
+    }
+
+    // Método para atualizar o salário base baseado no bônus
+    private void atualizarSalarioBase() {
+        // A cada 30 reais de bônus, aumenta o salário base em 100 reais
+        int bonusMultiploDe30 = bonus / 30;
+        this.salarioBase = this.salarioBase + (bonusMultiploDe30 * 100);
     }
 
     // Método para exibir detalhes do funcionário
