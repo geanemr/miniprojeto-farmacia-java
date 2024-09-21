@@ -13,9 +13,8 @@ Este projeto é uma aplicação Java para gerenciar uma farmácia. Ele permite l
 - Calcular bônus para funcionários a cada 30 reais de lucro acumulado.
 
 ## Estrutura do Projeto
-- `Farmacia.java`: Classe principal que gerencia medicamentos, funcionários e compras.
-- `Funcionario.java`: Classe que representa um funcionário da farmácia.
-- `Medicamento.java`: Classe que representa um medicamento.
+- `src/`: Contém os arquivos de código-fonte `.java`.
+- `bin/`: Contém os arquivos `.class` compilados.
 
 ## Requisitos
 - Java 8 ou superior.
@@ -23,19 +22,15 @@ Este projeto é uma aplicação Java para gerenciar uma farmácia. Ele permite l
 ## Instalação
 1. Clone o repositório:
     ```sh
-    git clone https://github.com/seu-usuario/miniprojeto-farmacia-java.git
+    git clone https://github.com/geanemr/miniprojeto-farmacia-java.git
     ```
-2. Navegue até o diretório do projeto:
+2. Navegue até a raiz do projeto:
     ```sh
     cd miniprojeto-farmacia-java
     ```
-3. Compile o projeto:
+3. Execute o projeto:
     ```sh
-    javac -d bin src/*.java
-    ```
-4. Execute o projeto:
-    ```sh
-    java Main
+    java -cp bin Main
     ```
 
 ## Menu Interativo no Prompt
