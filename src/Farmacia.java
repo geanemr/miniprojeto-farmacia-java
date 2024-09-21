@@ -48,33 +48,37 @@ public class Farmacia {
 
     // Método para listar os funcionários e seus bônus
     public void listarFuncionarios() {
-        System.out.println("Lista de Funcionarios e Bonus:");
+        System.out.println("Lista de Funcionarios, Salarios base e Bonus:");
         for (Funcionario funcionario : funcionarios) {
             funcionario.exibirDetalhes();
         }
     }
 
     // Método para comprar medicamento
-    public void comprarMedicamento(String nomeMedicamento, Funcionario funcionario) {
+    public void comprarMedicamento(String nomeMedicamento, Funcionario funcionario, int quantidade) {
         // Procura o medicamento na lista de medicamentos
         for (Medicamento medicamento : medicamentos) {
             if (medicamento.getNome().equalsIgnoreCase(nomeMedicamento)) {
-                // Verifica se o medicamento está disponível em estoque
-                if (medicamento.getQuantidadeEmEstoque() > 0) {
-                    // Remove 1 unidade do estoque
-                    medicamento.setQuantidadeEmEstoque(medicamento.getQuantidadeEmEstoque() - 1);
+                // Verifica se a quantidade solicitada está disponível em estoque
+                if (medicamento.getQuantidadeEmEstoque() >= quantidade) {
+                    // Remove a quantidade comprada do estoque
+                    medicamento.setQuantidadeEmEstoque(medicamento.getQuantidadeEmEstoque() - quantidade);
 
-                    // Adiciona o valor do medicamento ao lucro da farmácia
-                    this.lucro += medicamento.getPreco();
+                    // Adiciona o valor total dos medicamentos comprados ao lucro da farmácia
+                    double valorCompra = medicamento.getPreco() * quantidade;
+                    this.lucro += valorCompra;
 
-                    // Aumenta o bônus do funcionário em 10
-                    funcionario.setBonus(funcionario.getBonus() + 10);
+                    // Aumenta o bônus do funcionário proporcionalmente à quantidade que foi comprada com ele(a)
+                    funcionario.setBonus(funcionario.getBonus() + (10 * quantidade));
 
-                    System.out.println("Compra realizada: " + nomeMedicamento);
-                    System.out.println("Novo estoque de " + nomeMedicamento + ": " + medicamento.getQuantidadeEmEstoque());
+                    System.out.println("Compra realizada: " + quantidade + " unidade(s) de " + nomeMedicamento);
+                    System.out.println(
+                            "Novo estoque de " + nomeMedicamento + ": " + medicamento.getQuantidadeEmEstoque());
                     System.out.println("Novo lucro da farmacia: " + this.getLucro());
-                    System.out.println("Novo bonus do funcionario " + funcionario.getNome() + ": " + funcionario.getBonus());
-                    System.out.println("Salario base do funcionario " + funcionario.getNome() + ": " + funcionario.getSalarioBase());
+                    System.out.println(
+                            "Novo bonus do funcionario " + funcionario.getNome() + ": " + funcionario.getBonus());
+                    System.out.println("Salario base do funcionario " + funcionario.getNome() + ": "
+                            + funcionario.getSalarioBase());
                     return; // Compra realizada, sair do método
                 } else {
                     System.out.println("Estoque insuficiente de " + nomeMedicamento);
