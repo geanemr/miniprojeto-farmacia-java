@@ -1,4 +1,7 @@
+<div align="center">
+
 # Miniprojeto Farmácia Java
+</div>
 
 ## Descrição
 Este projeto é uma aplicação Java para gerenciar uma farmácia. Ele permite listar medicamentos, gerenciar estoque, registrar compras e calcular bônus para funcionários com base no lucro acumulado.
